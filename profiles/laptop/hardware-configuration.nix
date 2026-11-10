@@ -22,7 +22,7 @@
     options = [ "subvol=@swap" ];
   };
 
-  fileSystems."/boot" = {
+  fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/28FE-954B";
     fsType = "vfat";
     options = [ "fmask=0022" "dmask=0022" ];

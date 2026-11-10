@@ -4,6 +4,7 @@
   imports = [
     inputs.mangowm.nixosModules.mango
     inputs.noctalia.nixosModules.default
+    inputs.noctalia-greeter.nixosModules.default
   ];
 
   environment.systemPackages = with pkgs; [
@@ -15,6 +16,11 @@
   programs.noctalia = {
     enable = true;
     recommendedServices.enable = true;
+  };
+
+  services.displayManager.noctalia-greeter = {
+    enable = true;
+    
   };
 
   services.greetd = {

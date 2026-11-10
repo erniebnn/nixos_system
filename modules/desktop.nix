@@ -3,9 +3,19 @@
 {
   imports = [
     inputs.mangowm.nixosModules.mango
+    inputs.noctalia.nixosModules.default
+  ];
+
+  environment.systemPackages = with pkgs; [
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   programs.mango.enable = true;
+
+  programs.noctalia = {
+    enable = true;
+    recommendedServices.enable = true;
+  };
 
   services.greetd = {
     enable = true;

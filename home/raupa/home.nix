@@ -1,15 +1,15 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./noctalia.nix
+    ./mango.nix
+  ];
+
   home.packages = with pkgs; [
     fastfetch
     btop
   ];
-
-  wayland.windowManager.mango = {
-    enable = true;
-    extraConfig = builtins.readFile ./mango.toml;
-  };
 
   programs.git = {
     enable = true;

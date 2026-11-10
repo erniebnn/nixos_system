@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     fastfetch
     btop
+    firefox
   ];
 
   programs.git = {

@@ -28,6 +28,12 @@
   
   networking.hostName = "erwins-laptop";
 
+  console = {
+    font = "ter-i32b";
+    keyMap = "de";
+    packages = with pkgs; [ terminus_font ];
+  };
+
   users.users.raupa = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];

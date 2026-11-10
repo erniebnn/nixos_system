@@ -1,0 +1,12 @@
+[global]
+source = [ "./keybinds.toml" ]
+
+[[rule.monitor_rule]]
+name    = "eDP-1"
+width   = 2880
+height  = 1800
+refresh = 90
+x       = 0
+y       = 0
+scale   = 2
+primary = 1

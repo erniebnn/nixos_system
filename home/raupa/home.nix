@@ -28,4 +28,6 @@
     enableCompletion = true;
     bashrcExtra = builtins.readFile ./.bashrc;
   };
+
+  home.stateVersion = "26.05";
 }

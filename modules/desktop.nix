@@ -21,14 +21,4 @@
   services.displayManager.noctalia-greeter = {
     enable = true;
   };
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.noctalia-greeter}/bin/noctalia-greeter --cmd mango";
-        user = "greeter";
-      };
-    };
-  };
 }

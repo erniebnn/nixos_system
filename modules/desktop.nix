@@ -20,7 +20,6 @@
 
   services.displayManager.noctalia-greeter = {
     enable = true;
-    
   };
 
   services.greetd = {

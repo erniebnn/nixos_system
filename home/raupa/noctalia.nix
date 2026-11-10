@@ -5,9 +5,7 @@
     inputs.noctalia.homeModules.default
   ];
 
-  home-manager.users.raupa = {
-    programs.noctalia = {
-      enable = true;
-    };
+  programs.noctalia = {
+    enable = true;
   };
 }

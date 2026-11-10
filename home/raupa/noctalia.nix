@@ -1,11 +1,11 @@
 { inputs, ... }:
 
 {
-  home-manager.users.raupa = {
-    imports = [
-      inputs.noctalia.homeModules.default
-    ];
+  imports = [
+    inputs.noctalia.homeModules.default
+  ];
 
+  home-manager.users.raupa = {
     programs.noctalia = {
       enable = true;
     };

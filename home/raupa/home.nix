@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -8,7 +8,7 @@
 
   wayland.windowManager.mango = {
     enable = true;
-    extraConfig = lib.readFile ./mango.toml;
+    extraConfig = builtins.readFile ./mango.toml;
   };
 
   programs.git = {

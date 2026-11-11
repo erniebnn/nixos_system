@@ -1,5 +1,7 @@
 [global]
 source = [ "./keybinds.toml" ]
+xkb_rules_layout = "de"
+exec_once = [ "noctalia" ]
 
 [[rule.monitor_rule]]
 name    = "eDP-1"
@@ -10,3 +12,4 @@ x       = 0
 y       = 0
 scale   = 2
 primary = 1
+

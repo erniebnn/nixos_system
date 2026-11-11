@@ -7,6 +7,8 @@
   
   wayland.windowManager.mango = {
     enable = true;
-    settings = builtins.readFile ./mango.toml;
   };
+
+  xdg.configFile."mango/config.toml".source = ./mango/config.toml;
+  xdg.configFile."mango/keybinds.toml".source = ./mango/keybinds.toml;
 }

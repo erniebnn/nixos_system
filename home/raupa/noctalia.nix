@@ -7,6 +7,7 @@
 
   programs.noctalia = {
     enable = true;
-    settings = ./noctalia.toml;
   };
+
+  xdg.configFile."noctalia/config.toml".source = ./noctalia.toml;
 }

@@ -1,5 +1,6 @@
 [global]
 source = [ "./keybinds.toml" ]
+xkb_rules_model = "pc105"
 xkb_rules_layout = "de"
 exec_once = [ "noctalia" ]
 

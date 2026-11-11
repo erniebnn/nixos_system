@@ -1,0 +1,166 @@
+input {
+    keyboard {
+        xkb {
+            layout "de"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        scroll-factor 0.5
+        accel-speed 0.1
+    }
+}
+
+recent-windows {
+	off
+}
+
+output "eDP-1" {
+    mode "2880x1800"
+    scale 2
+    transform "normal"
+    position x=0 y=0
+}
+
+gestures {
+    dnd-edge-view-scroll {
+        trigger-width 30
+        delay-ms 100
+        max-speed 1500
+    }
+
+    dnd-edge-workspace-switch {
+        trigger-height 50
+        delay-ms 100
+        max-speed 1500
+    }
+
+    hot-corners { off }
+}
+
+layout {
+    gaps 8
+    center-focused-column "on-overflow"
+
+    preset-column-widths {
+        proportion 0.5
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    background-color "transparent"
+
+    focus-ring {
+        width 2
+        inactive-color "#505050"
+        active-color "#3e5c76ff"
+    }
+
+    border { off }
+}
+
+spawn-at-startup "noctalia"
+
+// spawn-sh-at-startup "kitty --hold bash -ic 'printf \"%s%s\n\" \"${PS1@P}\" \"fastfetch\"; fastfetch'"
+// spawn-sh-at-startup "kitty --hold bash -c btop"
+
+hotkey-overlay { skip-at-startup }
+
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+	match app-id=r#"^ski-file-manager$"#
+	draw-border-with-background false
+}
+
+window-rule {
+    geometry-corner-radius 6
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^dev.noctalia.Noctalia$"#
+    open-floating true
+    default-column-width { fixed 1280; }
+    default-window-height { fixed 800; }
+}
+
+layer-rule {
+    match namespace=r#"^noctalia-wallpaper$"#
+    place-within-backdrop true
+}
+
+debug {
+	honor-xdg-activation-with-invalid-serial
+}
+
+binds {
+    XF86AudioMicMute      allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+	XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+	XF86AudioLowerVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+	XF86AudioMute         allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+	XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
+	XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
+
+    XF86AudioPlay         allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop         allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev         allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext         allow-when-locked=true { spawn-sh "playerctl next"; }
+
+
+    Mod+C repeat=false                           { center-column; }
+    Mod+D                                        { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+F repeat=false                           { fullscreen-window; }
+	Mod+I                                        { spawn-sh "noctalia msg settings-toggle"; }
+    Mod+L                                        { spawn-sh "noctalia msg session lock"; }
+    Mod+O repeat=false                           { toggle-overview; }
+    Mod+Q repeat=false                           { close-window; }
+    Mod+R repeat=false                           { switch-preset-column-width; }
+	Mod+S                                        { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+T                                        { spawn "kitty"; }
+    Mod+V                                        { toggle-window-floating; }
+    Mod+Shift+V                                  { switch-focus-between-floating-and-tiling; }
+
+    Mod+Left                                     { focus-column-left; }
+    Mod+Right                                    { focus-column-right; }
+
+    Mod+Ctrl+Left                                { move-column-left; }
+    Mod+Ctrl+Right                               { move-column-right; }
+
+    Mod+Down                                     { focus-window-or-workspace-down; }
+    Mod+Up                                       { focus-window-or-workspace-up; }
+    Mod+Ctrl+Down                                { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+Up                                  { move-window-up-or-to-workspace-up; }
+
+    Mod+Shift+Left                               { focus-monitor-left; }
+    Mod+Shift+Down                               { focus-monitor-down; }
+    Mod+Shift+Up                                 { focus-monitor-up; }
+    Mod+Shift+Right                              { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+Left                          { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down                          { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up                            { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right                         { move-column-to-monitor-right; }
+
+    Mod+Alt+Left                                 { consume-or-expel-window-left; }
+    Mod+Alt+Right                                { consume-or-expel-window-right; }
+
+    Print                                        { screenshot-screen; }
+    Shift+Print                                  { screenshot; }
+    Ctrl+Print                                   { screenshot-window; }
+
+    Mod+Escape  allow-inhibiting=false           { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Shift+E allow-inhibiting=false           { quit; }
+}
+
+include "noctalia.kdl"

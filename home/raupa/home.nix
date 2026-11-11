@@ -3,7 +3,7 @@
 {
   imports = [
     ./noctalia.nix
-    ./mango.nix
+    ./niri.nix
   ];
 
   home.packages = with pkgs; [
@@ -23,6 +23,8 @@
   programs.kitty = {
     enable = true;
   };
+
+  programs.vscode.enable = true;
 
   programs.bash = {
     enable = true;

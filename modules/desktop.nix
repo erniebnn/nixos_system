@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.mangowm.nixosModules.mango
+    inputs.niri.nixosModules.niri
     inputs.noctalia.nixosModules.default
     inputs.noctalia-greeter.nixosModules.default
   ];
@@ -11,7 +11,10 @@
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
-  programs.mango.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+  };
 
   programs.noctalia = {
     enable = true;

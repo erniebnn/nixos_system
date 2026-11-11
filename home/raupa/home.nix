@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
     fastfetch
     btop
-    firefox
   ];
 
   programs.git = {
@@ -24,7 +23,13 @@
     enable = true;
   };
 
+  programs.firefox.enable = true;
   programs.vscode.enable = true;
+
+  programs.fastfetch = {
+    enable = true;
+    settings.logo.source = "nixos2";
+  };
 
   programs.bash = {
     enable = true;

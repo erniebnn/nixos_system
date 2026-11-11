@@ -9,5 +9,12 @@
     enable = true;
   };
 
-  xdg.configFile."noctalia/config.toml".source = ./noctalia.toml;
+  xdg.configFile."noctalia" = {
+    source = ./noctalia;
+    target = ".";
+  };
+
+  home.file = {
+    "Wallpapers".source = ./wallpapers;
+  };
 }

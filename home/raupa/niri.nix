@@ -5,5 +5,8 @@
     inputs.niri.homeModules.niri
   ];
 
-  xdg.configFile."niri/config.kdl".source = ./niri/config.kdl
+  xdg.configFile."niri" = {
+    source = ./niri;
+    target = ".";
+  };
 }

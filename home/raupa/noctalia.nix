@@ -11,7 +11,6 @@
 
   xdg.configFile."noctalia" = {
     source = ./noctalia;
-    target = ".";
   };
 
   home.file = {

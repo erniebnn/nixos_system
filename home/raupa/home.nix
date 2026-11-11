@@ -6,6 +6,8 @@
     ./niri.nix
   ];
 
+  xdg.enable = true;
+
   home.packages = with pkgs; [
     fastfetch
     btop
